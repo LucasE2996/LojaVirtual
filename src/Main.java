@@ -28,9 +28,16 @@ public class Main {
         // rotina de checkout
         Scanner scanner = new Scanner(System.in);
         Pagamento pagamento = null;
-        System.out.println("Insira o tipo de pagamento:");
+        GerenciadorCompra gerenciador = new GerenciadorCompra(DB, carrinho);
+
+        System.out.println("Digite o id do cliente(login): ");
+        int idCliente = scanner.nextInt();
+        gerenciador.validarCliente(idCliente);
+
+        System.out.println("Insira a forma de pagamento:");
         String tipo = scanner.next();
-        if (tipo.equals("boleto")){
+
+        if (tipo.equals("boleto")) {
             pagamento = new Boleto();
         } else if (tipo.equals("CC")) {
             System.out.println("Numero do Cartão:");
@@ -40,10 +47,8 @@ public class Main {
             pagamento = new CC(numCartao, parcelas);
         }
 
-        GerenciadorCompra gerenciador = new GerenciadorCompra(DB, carrinho, pagamento);
-        gerenciador.validarCompra(1, "Boleto");
+        gerenciador.validarCompra(pagamento);
 
-        DB.getClientes().get(0).getCompras()
-                .forEach(compra -> System.out.println(compra.getDescricao()));
+        System.out.println("Compra realizada com sucesso!");
     }
 }
