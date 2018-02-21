@@ -10,13 +10,12 @@ public class Boleto extends Pagamento{
 
     @Override
     public boolean validarPagamento() {
-        imprimirCodigo();
         isValido = true;
         return isValido;
     }
 
-    private void imprimirCodigo() {
-        System.out.println("Código do boleto: " + codigo);
+    public int getCodigo() {
+        return codigo;
     }
 
     private int gerarCodigo() {

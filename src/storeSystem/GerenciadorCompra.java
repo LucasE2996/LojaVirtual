@@ -9,7 +9,6 @@ public class GerenciadorCompra {
     private final Carrinho carrinho;
     private final FakeDB DB;
     private Cliente cliente;
-    private Compra compra;
 
     public GerenciadorCompra(FakeDB DB, Carrinho carrinho) {
         this.DB = DB;
@@ -36,7 +35,7 @@ public class GerenciadorCompra {
     private void addCompraToCliente(Pagamento pagamento) {
         final int novoId = cliente.getCompras().size() + 1;
         final String novaDescricao = "Compra nº" + (novoId);
-        compra = new Compra(novoId, carrinho, pagamento, novaDescricao);
+        Compra compra = new Compra(novoId, carrinho, pagamento, novaDescricao);
         cliente.addCompra(compra);
     }
 

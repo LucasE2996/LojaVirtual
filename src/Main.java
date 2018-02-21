@@ -42,17 +42,23 @@ public class Main {
         String tipo = scanner.next();
 
         if (tipo.equals("boleto")) {
-            pagamento = new Boleto(gerenciador.getValordaCompra());
+            Boleto boleto = new Boleto(gerenciador.getValordaCompra());
+            System.out.println("Código do boleto: " + boleto.getCodigo());
+            pagamento = boleto;
         } else if (tipo.equals("CC")) {
             System.out.println("Numero do Cartão:");
             int numCartao = scanner.nextInt();
             System.out.println("Numero de parcelas");
             int parcelas = scanner.nextInt();
-            pagamento = new CC(numCartao, gerenciador.getValordaCompra(), parcelas);
+            CC cc = new CC(numCartao, gerenciador.getValordaCompra(), parcelas);
+            System.out.println("Número do cartão: " + cc.getNumeroCartao());
+            pagamento = cc;
         }
 
-        gerenciador.validarCompra(pagamento);
-
-        System.out.println("Compra realizada com sucesso!");
+        if (gerenciador.validarCompra(pagamento)) {
+            System.out.println("Compra realizada com sucesso!");
+        } else {
+            System.out.println("Ops! Algo deu errado");
+        }
     }
 }
