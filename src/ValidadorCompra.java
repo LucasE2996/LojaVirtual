@@ -7,7 +7,6 @@ public class ValidadorCompra {
     }
 
     public boolean validarCompra() {
-        compra.getPagamento().validarPagamento();
-        return compra.getPagamento().isValido();
+        return compra.getPagamento().validarPagamento();
     }
 }

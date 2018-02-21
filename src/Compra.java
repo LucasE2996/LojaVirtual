@@ -1,3 +1,5 @@
+import pagamento.Pagamento;
+
 public class Compra {
     private final int id;
     private final Carrinho carrinho;
