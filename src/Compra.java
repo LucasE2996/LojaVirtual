@@ -1,13 +1,12 @@
 public class Compra {
     private final int id;
     private final Carrinho carrinho;
-    private int parcelas;
-    private Pagamento pagamento;
+    private final Pagamento pagamento;
 
-    public Compra(int id, Cliente cliente, Carrinho carrinho, int parcelas) {
+    public Compra(int id, Cliente cliente, Carrinho carrinho, Pagamento pagamento) {
         this.id = id;
         this.carrinho = carrinho;
-        this.parcelas = parcelas;
+        this.pagamento = pagamento;
     }
 
     public int getId() {
@@ -18,7 +17,7 @@ public class Compra {
         return carrinho;
     }
 
-    public int getParcelas() {
-        return parcelas;
+    public Pagamento getPagamento() {
+        return pagamento;
     }
 }

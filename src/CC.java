@@ -1,12 +1,8 @@
-public class CC extends Pagamento{
-    private int numero;
+public class CC extends Pagamento {
+    private final int numero;
 
-    public CC(String tipo) {
-        super(tipo);
-    }
-
-    @Override
-    void validarPagamento() {
-
+    public CC(int numero) {
+        super("CC");
+        this.numero = numero;
     }
 }

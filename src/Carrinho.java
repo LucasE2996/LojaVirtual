@@ -1,14 +1,21 @@
+import java.util.Collections;
 import java.util.List;
 
 public class Carrinho {
-    private List<Produto> produtos;
+    private final List<Produto> produtos;
 
-    public Carrinho addProduto(Produto produto) {
-        produtos.add(produto);
-        return this;
+   public Carrinho(List<Produto> produtos){
+       this.produtos = produtos;
+   }
+
+    public List<Produto> getProdutos() {
+        return Collections.unmodifiableList(produtos);
     }
 
-    public Carrinho build() {
-        return this;
+    public Produto getProduto(String nome) {
+       return produtos.stream()
+               .filter(produto -> produto.getNome().equals(nome))
+               .findFirst()
+               .get();
     }
 }

@@ -10,9 +10,11 @@ public class Main {
         Produto produto03 = new Produto(150.67, "Headset");
 
 
-        Compra compra = new Compra(1,
-                cliente01,
-                new Carrinho().addProduto(produto01).addProduto(produto02).build(),
-                12);
+        Compra compra = new Compra(1, cliente01,
+                new CarrinhoBuilder().addProduto(produto01, 2).addProduto(produto02, 1).build(),
+                new Boleto());
+
+        ValidadorCompra validador = new ValidadorCompra(compra);
+        validador.validarCompra();
     }
 }
