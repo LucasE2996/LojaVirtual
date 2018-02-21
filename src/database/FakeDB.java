@@ -1,5 +1,9 @@
+package database;
+
 import java.util.LinkedList;
 import java.util.List;
+import storeSystem.Produto;
+import storeSystem.Cliente;
 import java.util.NoSuchElementException;
 
 public class FakeDB {

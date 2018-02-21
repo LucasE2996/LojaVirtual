@@ -3,8 +3,8 @@ package pagamento;
 public class Boleto extends Pagamento{
     private final int codigo;
 
-    public Boleto() {
-        super("Boleto");
+    public Boleto(double valor) {
+        super("Boleto", valor);
         this.codigo = gerarCodigo();
     }
 

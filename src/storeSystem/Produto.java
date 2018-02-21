@@ -1,3 +1,5 @@
+package storeSystem;
+
 public class Produto {
     private double preco;
     private final String nome;

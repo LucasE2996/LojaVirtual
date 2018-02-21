@@ -1,10 +1,13 @@
+package storeSystem;
+
 import java.util.Collections;
 import java.util.List;
 
 public class Carrinho {
     private final List<Produto> produtos;
+    private double valor;
 
-   public Carrinho(List<Produto> produtos){
+   Carrinho(List<Produto> produtos){
        this.produtos = produtos;
    }
 
@@ -17,5 +20,13 @@ public class Carrinho {
                .filter(produto -> produto.getNome().equals(nome))
                .findFirst()
                .get();
+    }
+
+    private void calcValor() {
+        getProdutos().forEach(produto -> valor += produto.getPreco());
+    }
+
+    public double getValor() {
+        return valor;
     }
 }

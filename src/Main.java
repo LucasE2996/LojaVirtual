@@ -1,6 +1,10 @@
+import database.FakeDB;
 import pagamento.Boleto;
 import pagamento.CC;
 import pagamento.Pagamento;
+import storeSystem.Carrinho;
+import storeSystem.CarrinhoBuilder;
+import storeSystem.GerenciadorCompra;
 
 import java.util.Scanner;
 
@@ -38,13 +42,13 @@ public class Main {
         String tipo = scanner.next();
 
         if (tipo.equals("boleto")) {
-            pagamento = new Boleto();
+            pagamento = new Boleto(gerenciador.getValordaCompra());
         } else if (tipo.equals("CC")) {
             System.out.println("Numero do Cartão:");
             int numCartao = scanner.nextInt();
             System.out.println("Numero de parcelas");
             int parcelas = scanner.nextInt();
-            pagamento = new CC(numCartao, parcelas);
+            pagamento = new CC(numCartao, gerenciador.getValordaCompra(), parcelas);
         }
 
         gerenciador.validarCompra(pagamento);

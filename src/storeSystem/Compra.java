@@ -1,3 +1,5 @@
+package storeSystem;
+
 import pagamento.Pagamento;
 
 public class Compra {
@@ -12,7 +14,6 @@ public class Compra {
         this.carrinho = carrinho;
         this.pagamento = pagamento;
         this.descricao = descricao;
-        calcValor();
     }
 
     public String getDescricao() {
@@ -27,11 +28,13 @@ public class Compra {
         return pagamento;
     }
 
-    private void setPagamento(String tipoDePagamento) {
-
+    private void setValor() {
+        valor = getCarrinho().getValor();
     }
 
-    private void calcValor() {
-        carrinho.getProdutos().forEach(produto -> valor += produto.getPreco());
+    public double getValor() {
+        return valor;
     }
+
+
 }

@@ -1,13 +1,14 @@
+package storeSystem;
 
+import database.FakeDB;
 import pagamento.Pagamento;
 
 import java.util.NoSuchElementException;
 
 public class GerenciadorCompra {
     private final Carrinho carrinho;
-    private Cliente cliente;
     private final FakeDB DB;
-
+    private Cliente cliente;
     private Compra compra;
 
     public GerenciadorCompra(FakeDB DB, Carrinho carrinho) {
@@ -26,6 +27,10 @@ public class GerenciadorCompra {
                 .filter(cliente1 -> cliente1.getId() == id)
                 .findAny()
                 .orElseThrow(NoSuchElementException::new);
+    }
+
+    public double getValordaCompra() {
+        return carrinho.getValor();
     }
 
     private void addCompraToCliente(Pagamento pagamento) {
