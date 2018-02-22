@@ -14,8 +14,8 @@ public class GerenciadorCompra {
         this.carrinho = carrinho;
     }
 
-    public boolean validarCompra(Pagamento pagamento) {
-        validarPagamento(pagamento);
+    public boolean validarCompra(TipoPagamento tipo) {
+        Pagamento pagamento = createPagamento(tipo, carrinho.getValor());
         addCompraToCliente(pagamento);
         return true;
     }
@@ -37,7 +37,17 @@ public class GerenciadorCompra {
         cliente.addCompra(compra);
     }
 
-    private void validarPagamento(Pagamento pagamento) {
-        pagamento.validarPagamento();
+    // factory method
+    private Pagamento createPagamento(TipoPagamento tipo, double value) {
+        switch (tipo) {
+            case BOLETO:
+                return new Boleto(value);
+                break;
+            case CC:
+                return new CC(value);
+                break;
+            default:
+                return null;
+        }
     }
 }

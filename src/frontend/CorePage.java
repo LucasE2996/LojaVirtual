@@ -48,7 +48,6 @@ public class CorePage {
     }
 
     private void checkoutRouteene() {
-        Pagamento pagamento = null;
         GerenciadorCompra gerenciador = new GerenciadorCompra(DB, carrinho);
 
         System.out.println("Digite o id do cliente(login): ");
@@ -56,25 +55,9 @@ public class CorePage {
         gerenciador.validarCliente(idCliente);
 
         System.out.println("Insira a forma de pagamento:");
-        String tipo = scanner.next();
+        TipoPagamento tipo = TipoPagamento.valueOf(scanner.next());
 
-        // substituir por menu de opçoes de pagamento (Map <key, tipo de pagamento>)
-        if (tipo.equals("boleto")) {
-            Boleto boleto = new Boleto(gerenciador.getValordaCompra());
-            System.out.println("Código do boleto: " + boleto.getCodigo());
-            pagamento = boleto;
-        } else if (tipo.equals("CC")) {
-            System.out.println("Numero do Cartão:");
-            String numCartao = scanner.next();
-            System.out.println("Numero de parcelas");
-            int parcelas = scanner.nextInt();
-            CC cc = new CC(numCartao, gerenciador.getValordaCompra(), parcelas);
-            pagamento = cc;
-        }
-
-        System.out.println("Tipo de pagamento: " + pagamento.getTipo() + "\nValor total da compra: " + pagamento.getValor());
-
-        if (gerenciador.validarCompra(pagamento)) {
+        if (gerenciador.validarCompra(tipo)) {
             System.out.println("Compra realizada com sucesso!");
         } else {
             System.out.println("Ops! Algo deu errado");
