@@ -48,14 +48,23 @@ public class CorePage {
     }
 
     private void checkoutRouteene() {
-        GerenciadorCompra gerenciador = new GerenciadorCompra(DB, carrinho);
+        Login login = new Login(DB);
 
         System.out.println("Digite o id do cliente(login): ");
         int idCliente = scanner.nextInt();
-        gerenciador.validarCliente(idCliente);
+        login.validarCliente(idCliente);
 
         System.out.println("Insira a forma de pagamento:");
         TipoPagamento tipo = TipoPagamento.valueOf(scanner.next());
+
+        GerenciadorCompra gerenciador = null;
+        if(tipo.equals(TipoPagamento.CC)){
+            System.out.println("Digite o numero do cartão:");
+            String numCartao = scanner.next();
+            System.out.println("Digite o numero de parcelas:");
+            int parcelas = scanner.nextInt();
+            GerenciadorCC gerenciadorCC = new GerenciadorCC(DB, carrinho, numCartao, parcelas);
+        }
 
         if (gerenciador.validarCompra(tipo)) {
             System.out.println("Compra realizada com sucesso!");

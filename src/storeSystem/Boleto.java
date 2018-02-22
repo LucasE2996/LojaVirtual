@@ -3,7 +3,7 @@ package storeSystem;
 public class Boleto extends Pagamento {
     private final int codigo;
 
-    public Boleto(double valor) {
+    Boleto(double valor) {
         super(TipoPagamento.BOLETO, valor);
         this.codigo = gerarCodigo();
     }

@@ -4,7 +4,7 @@ import database.FakeDB;
 
 import java.util.NoSuchElementException;
 
-public class GerenciadorCompra {
+public abstract class GerenciadorCompra {
     private final Carrinho carrinho;
     private final FakeDB DB;
     private Cliente cliente;
@@ -21,10 +21,7 @@ public class GerenciadorCompra {
     }
 
     public void validarCliente(int id) {
-        this.cliente = DB.getClientes().stream()
-                .filter(cliente1 -> cliente1.getId() == id)
-                .findAny()
-                .orElseThrow(NoSuchElementException::new);
+
     }
 
     public double getValordaCompra() {
@@ -38,16 +35,5 @@ public class GerenciadorCompra {
     }
 
     // factory method
-    private Pagamento createPagamento(TipoPagamento tipo, double value) {
-        switch (tipo) {
-            case BOLETO:
-                return new Boleto(value);
-                break;
-            case CC:
-                return new CC(value);
-                break;
-            default:
-                return null;
-        }
-    }
+    abstract Pagamento createPagamento(TipoPagamento tipo, double value);
 }

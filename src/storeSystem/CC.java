@@ -2,10 +2,14 @@ package storeSystem;
 
 public class CC extends Pagamento {
 
-    private final String numeroCartao;
-    private final int parcelas;
+    private String numeroCartao;
+    private int parcelas;
 
-    public CC(String numeroCartao, double valor, int parcelas) {
+    CC(double valor) {
+        super(TipoPagamento.CC, valor);
+    }
+
+    CC(String numeroCartao, double valor, int parcelas) {
         super(TipoPagamento.CC, valor);
         this.parcelas = parcelas;
         this.numeroCartao = numeroCartao;
