@@ -15,12 +15,12 @@ public class Compra {
         return id;
     }
 
-    public Carrinho getCarrinho() {
-        return carrinho;
-    }
-
     public double getValor() {
         return valor;
+    }
+
+    private Carrinho getCarrinho() {
+        return carrinho;
     }
 
     private void setValor() {

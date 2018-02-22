@@ -11,8 +11,7 @@ public class Boleto extends Pagamento {
     @Override
     boolean validarPagamento() {
         // codigo de validacao de pagamento no sistema bancario
-        isValido = true;
-        return isValido;
+        return true;
     }
 
     public String getCodigo() {

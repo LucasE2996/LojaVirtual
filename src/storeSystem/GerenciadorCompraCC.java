@@ -11,10 +11,6 @@ public class GerenciadorCompraCC extends GerenciadorCompra {
         this.parcelas = parcelas;
     }
 
-    public String getNumCartao() {
-        return numCartao;
-    }
-
     @Override
     void validarPagamento(TipoPagamento tipo) {
         CC cc = new CC(getCarrinho().getValor());

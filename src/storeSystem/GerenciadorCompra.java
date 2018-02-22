@@ -4,15 +4,14 @@ public abstract class GerenciadorCompra {
     private Carrinho carrinho;
     private Cliente cliente;
 
-    public GerenciadorCompra(Carrinho carrinho, Cliente cliente) {
+    GerenciadorCompra(Carrinho carrinho, Cliente cliente) {
         this.carrinho = carrinho;
         this.cliente = cliente;
     }
 
-    public boolean validarCompra(TipoPagamento tipo) {
+    public void validarCompra(TipoPagamento tipo) {
         validarPagamento(tipo);
         addCompraToCliente();
-        return true;
     }
 
     public double getValorCompra() {
