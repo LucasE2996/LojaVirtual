@@ -1,17 +1,17 @@
-package pagamento;
+package storeSystem;
 
 public class CC extends Pagamento {
 
     private final int numeroCartao, parcelas;
 
     public CC(int numeroCartao, double valor, int parcelas) {
-        super("CC", valor);
+        super(TipoPagamento.CC, valor);
         this.parcelas = parcelas;
         this.numeroCartao = numeroCartao;
     }
 
     @Override
-    public boolean validarPagamento() {
+    boolean validarPagamento() {
         return validarCartao(numeroCartao, getValor(), parcelas);
     }
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarrinhoBuilder {
-    List<Produto> produtos;
+    private final List<Produto> produtos;
 
     public CarrinhoBuilder() {
         produtos = new ArrayList<>();
@@ -18,6 +18,6 @@ public class CarrinhoBuilder {
     }
 
     public Carrinho build() {
-        return new Carrinho(produtos);
+        return new Carrinho(/*carrinho*/);
     }
 }

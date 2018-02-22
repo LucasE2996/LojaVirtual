@@ -1,15 +1,16 @@
-package pagamento;
+package storeSystem;
 
-public class Boleto extends Pagamento{
+public class Boleto extends Pagamento {
     private final int codigo;
 
     public Boleto(double valor) {
-        super("Boleto", valor);
+        super(TipoPagamento.BOLETO, valor);
         this.codigo = gerarCodigo();
     }
 
     @Override
-    public boolean validarPagamento() {
+    boolean validarPagamento() {
+        // codigo de validacao de pagamento no sistema bancario
         isValido = true;
         return isValido;
     }

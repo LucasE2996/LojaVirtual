@@ -1,7 +1,6 @@
 package storeSystem;
 
 import database.FakeDB;
-import pagamento.Pagamento;
 
 import java.util.NoSuchElementException;
 

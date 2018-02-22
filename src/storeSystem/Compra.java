@@ -1,7 +1,5 @@
 package storeSystem;
 
-import pagamento.Pagamento;
-
 public class Compra {
     private final int id;
     private final String descricao;
@@ -9,11 +7,16 @@ public class Compra {
     private final Pagamento pagamento;
     private double valor;
 
-    public Compra(int id, Carrinho carrinho, Pagamento pagamento, String descricao) {
+    Compra(int id, Carrinho carrinho, Pagamento pagamento, String descricao) {
         this.id = id;
         this.carrinho = carrinho;
         this.pagamento = pagamento;
         this.descricao = descricao;
+        setValor();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getDescricao() {
@@ -28,13 +31,11 @@ public class Compra {
         return pagamento;
     }
 
-    private void setValor() {
-        valor = getCarrinho().getValor();
-    }
-
     public double getValor() {
         return valor;
     }
 
-
+    private void setValor() {
+        valor = getCarrinho().getValor();
+    }
 }

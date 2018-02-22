@@ -13,12 +13,12 @@ public class Cliente {
         compras = new LinkedList<>();
     }
 
-    public int getId() {
-        return id;
+    void addCompra(Compra compra) {
+        compras.add(compra);
     }
 
-    public void addCompra(Compra compra) {
-        compras.add(compra);
+    public int getId() {
+        return id;
     }
 
     public List<Compra> getCompras() {

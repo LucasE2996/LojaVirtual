@@ -1,32 +1,27 @@
 package storeSystem;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Carrinho {
-    private final List<Produto> produtos;
+    private  List<Produto> produtos = new LinkedList<>();
     private double valor;
 
-   Carrinho(List<Produto> produtos){
-       this.produtos = produtos;
+   public void addProduto(Produto produto) {
+       produtos.add(produto);
+       calcValor();
    }
 
     public List<Produto> getProdutos() {
         return Collections.unmodifiableList(produtos);
     }
 
-    public Produto getProduto(String nome) {
-       return produtos.stream()
-               .filter(produto -> produto.getNome().equals(nome))
-               .findFirst()
-               .get();
+    public double getValor() {
+        return valor;
     }
 
     private void calcValor() {
-        getProdutos().forEach(produto -> valor += produto.getPreco());
-    }
-
-    public double getValor() {
-        return valor;
+        valor = getProdutos().stream().mapToDouble(Produto::getPreco).sum();
     }
 }
