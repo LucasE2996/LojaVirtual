@@ -1,39 +1,33 @@
 package storeSystem;
 
-import database.FakeDB;
-
-import java.util.NoSuchElementException;
-
 public abstract class GerenciadorCompra {
-    private final Carrinho carrinho;
-    private final FakeDB DB;
+    private Carrinho carrinho;
     private Cliente cliente;
 
-    public GerenciadorCompra(FakeDB DB, Carrinho carrinho) {
-        this.DB = DB;
+    public GerenciadorCompra(Carrinho carrinho, Cliente cliente) {
         this.carrinho = carrinho;
+        this.cliente = cliente;
     }
 
     public boolean validarCompra(TipoPagamento tipo) {
-        Pagamento pagamento = createPagamento(tipo, carrinho.getValor());
-        addCompraToCliente(pagamento);
+        validarPagamento(tipo);
+        addCompraToCliente();
         return true;
     }
 
-    public void validarCliente(int id) {
-
-    }
-
-    public double getValordaCompra() {
+    public double getValorCompra() {
         return carrinho.getValor();
     }
 
-    private void addCompraToCliente(Pagamento pagamento) {
+    private void addCompraToCliente() {
         final int novoId = cliente.getCompras().size() + 1;
-        Compra compra = new Compra(novoId, carrinho, pagamento);
+        Compra compra = new Compra(novoId, carrinho);
         cliente.addCompra(compra);
     }
 
-    // factory method
-    abstract Pagamento createPagamento(TipoPagamento tipo, double value);
+    abstract void validarPagamento(TipoPagamento tipo);
+
+    Carrinho getCarrinho() {
+        return carrinho;
+    }
 }

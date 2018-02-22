@@ -1,7 +1,7 @@
 package storeSystem;
 
 public class Produto {
-    private double preco;
+    private final double preco;
     private final String nome;
 
     public Produto(double preco, String nome) {

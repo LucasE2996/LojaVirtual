@@ -1,5 +1,6 @@
 package storeSystem;
 
+import com.sun.deploy.util.SessionState;
 import database.FakeDB;
 
 import java.util.NoSuchElementException;
@@ -11,8 +12,8 @@ public class Login {
         this.db = db;
     }
 
-    public void validarCliente(int id) {
-        db.getClientes().stream()
+    public Cliente validarCliente(int id) {
+        return db.getClientes().stream()
                 .filter(cliente1 -> cliente1.getId() == id)
                 .findAny()
                 .orElseThrow(NoSuchElementException::new);

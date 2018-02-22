@@ -1,7 +1,7 @@
 package storeSystem;
 
 public class Boleto extends Pagamento {
-    private final int codigo;
+    private final String codigo;
 
     Boleto(double valor) {
         super(TipoPagamento.BOLETO, valor);
@@ -15,11 +15,11 @@ public class Boleto extends Pagamento {
         return isValido;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    private int gerarCodigo() {
-        return 1000000000 + (int)(Math.random() * 999999999);
+    private String gerarCodigo() {
+        return Integer.toString(1000000000 + (int)(Math.random() * 999999999));
     }
 }

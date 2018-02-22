@@ -3,13 +3,11 @@ package storeSystem;
 public class Compra {
     private final int id;
     private final Carrinho carrinho;
-    private final Pagamento pagamento;
     private double valor;
 
-    Compra(int id, Carrinho carrinho, Pagamento pagamento) {
+    Compra(int id, Carrinho carrinho) {
         this.id = id;
         this.carrinho = carrinho;
-        this.pagamento = pagamento;
         setValor();
     }
 
@@ -19,10 +17,6 @@ public class Compra {
 
     public Carrinho getCarrinho() {
         return carrinho;
-    }
-
-    public Pagamento getPagamento() {
-        return pagamento;
     }
 
     public double getValor() {

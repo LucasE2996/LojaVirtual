@@ -3,6 +3,8 @@ package frontend;
 import storeSystem.*;
 import database.*;
 
+import java.util.HashMap;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class CorePage {
@@ -10,11 +12,15 @@ public class CorePage {
     private final Scanner scanner;
     private final FakeDB DB;
     private Carrinho carrinho;
+    private HashMap<Integer, TipoPagamento> formaDePagamento;
 
     public CorePage() {
         scanner  = new Scanner(System.in);
         DB =  new FakeDB();
         carrinho = new Carrinho();
+        formaDePagamento = new HashMap<>();
+        formaDePagamento.put(1, TipoPagamento.BOLETO);
+        formaDePagamento.put(2, TipoPagamento.CC);
         iniciarBd();
     }
 
@@ -52,24 +58,27 @@ public class CorePage {
 
         System.out.println("Digite o id do cliente(login): ");
         int idCliente = scanner.nextInt();
-        login.validarCliente(idCliente);
+        Cliente loggedClient = login.validarCliente(idCliente);
 
-        System.out.println("Insira a forma de pagamento:");
-        TipoPagamento tipo = TipoPagamento.valueOf(scanner.next());
+        System.out.println("Insira a forma de pagamento:\n[1]boleto\n[2]cartão de crrédito");
+        int opcao = scanner.nextInt();
+        TipoPagamento tipo = selecionarPagamento(opcao);
+        GerenciadorCompra gerenciador;
 
-        GerenciadorCompra gerenciador = null;
-        if(tipo.equals(TipoPagamento.CC)){
+        if(tipo.equals(TipoPagamento.CC)) {
             System.out.println("Digite o numero do cartão:");
             String numCartao = scanner.next();
             System.out.println("Digite o numero de parcelas:");
             int parcelas = scanner.nextInt();
-            GerenciadorCC gerenciadorCC = new GerenciadorCC(DB, carrinho, numCartao, parcelas);
-        }
-
-        if (gerenciador.validarCompra(tipo)) {
-            System.out.println("Compra realizada com sucesso!");
-        } else {
-            System.out.println("Ops! Algo deu errado");
+            gerenciador = new GerenciadorCompraCC(carrinho, loggedClient, numCartao, parcelas);
+            gerenciador.validarCompra(tipo);
+            printValorTotal(gerenciador.getValorCompra());
+        } else if(tipo.equals(TipoPagamento.BOLETO)) {
+            GerenciadorCompraBoleto gerenciadorBoleto = new GerenciadorCompraBoleto(carrinho, loggedClient);
+            gerenciador = gerenciadorBoleto;
+            gerenciador.validarCompra(tipo);
+            System.out.println("Codigo do boleto: " + gerenciadorBoleto.getCodigo());
+            printValorTotal(gerenciador.getValorCompra());
         }
     }
 
@@ -78,5 +87,17 @@ public class CorePage {
         for (int i = 0; i < qtd; i++) {
             carrinho.addProduto(novoProduto);
         }
+    }
+
+    private TipoPagamento selecionarPagamento(int valor) {
+        return formaDePagamento.entrySet().stream()
+                .filter(value -> value.getKey() == valor)
+                .findAny()
+                .orElseThrow(NoSuchElementException::new)
+                .getValue();
+    }
+
+    private void printValorTotal(double valor) {
+        System.out.println("Valor total da compra: R$" + valor);
     }
 }
