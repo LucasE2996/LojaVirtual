@@ -34,9 +34,9 @@ public class CorePage {
 
         System.out.println("Digite o nome do produto que deseja adicionar, e a quantidade: [0 para finalizar compra]");
         int number = 1;
-        while (number != 0){
+        while (number != 0) {
             System.out.println("Novo produto:");
-            addProduto(scanner.next(), scanner.nextInt());
+            addProduto(scanner.next().trim(), scanner.nextInt());
             System.out.println("Para finalizar compra digite 0, caso queira comprar novamente digite outro numero");
             number = scanner.nextInt();
         }
@@ -65,11 +65,10 @@ public class CorePage {
             pagamento = boleto;
         } else if (tipo.equals("CC")) {
             System.out.println("Numero do Cartão:");
-            int numCartao = scanner.nextInt();
+            String numCartao = scanner.next();
             System.out.println("Numero de parcelas");
             int parcelas = scanner.nextInt();
             CC cc = new CC(numCartao, gerenciador.getValordaCompra(), parcelas);
-            System.out.println("Número do cartão: " + cc.getNumeroCartao());
             pagamento = cc;
         }
 

@@ -33,8 +33,7 @@ public class GerenciadorCompra {
 
     private void addCompraToCliente(Pagamento pagamento) {
         final int novoId = cliente.getCompras().size() + 1;
-        final String novaDescricao = "Compra nº" + (novoId);
-        Compra compra = new Compra(novoId, carrinho, pagamento, novaDescricao);
+        Compra compra = new Compra(novoId, carrinho, pagamento);
         cliente.addCompra(compra);
     }
 
