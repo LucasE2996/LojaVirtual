@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class CorePage {
 
-    private final Scanner scanner  = new Scanner(System.in);;
+    private final Scanner scanner  = new Scanner(System.in);
     private final FakeDB DB;
     private final GerenciadorCompra gerenciador;
     private Carrinho carrinho;
@@ -40,6 +40,7 @@ public class CorePage {
         comprar();
         validarCliente();
         validarPagamento();
+        System.out.println("Compra finalizada com sucesso!");
     }
 
     private void showProdutos() {
