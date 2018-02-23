@@ -14,10 +14,9 @@ public class GerenciadorCompra {
         this.carrinho = carrinho;
     }
 
-    public boolean validarCompra(Pagamento pagamento) {
+    public void validarCompra(Pagamento pagamento) {
         validarPagamento(pagamento);
         addCompraToCliente(pagamento);
-        return true;
     }
 
     public void validarCliente(int id) {
