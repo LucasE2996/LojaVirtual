@@ -2,25 +2,19 @@ package storeSystem;
 
 public class CC extends Pagamento {
 
-    private String numeroCartao;
-    private int parcelas;
+    private final String numeroCartao;
+    private final int parcelas;
 
-    CC(double valor) {
+    CC(double valor, String numeroCartao, int parcelas) {
         super(TipoPagamento.CC, valor);
+        this.numeroCartao = numeroCartao;
+        this.parcelas = parcelas;
     }
 
     @Override
     boolean validarPagamento() {
         verificarCartao(numeroCartao, parcelas, getValor());
         return true;
-    }
-
-    public void setNumeroCartao(String numeroCartao) {
-        this.numeroCartao = numeroCartao;
-    }
-
-    public void setParcelas(int parcelas) {
-        this.parcelas = parcelas;
     }
 
     private void verificarCartao(String numeroCartao, int parcelas, double valor) {

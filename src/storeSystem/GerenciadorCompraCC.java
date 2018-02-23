@@ -13,9 +13,7 @@ public class GerenciadorCompraCC extends GerenciadorCompra {
 
     @Override
     void validarPagamento(TipoPagamento tipo) {
-        CC cc = new CC(getCarrinho().getValor());
-        cc.setNumeroCartao(numCartao);
-        cc.setParcelas(parcelas);
+        CC cc = new CC(getCarrinho().getValor(), numCartao, parcelas);
         cc.validarPagamento();
     }
 }
