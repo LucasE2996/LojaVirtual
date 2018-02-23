@@ -6,22 +6,16 @@ import java.util.List;
 
 public class Carrinho {
     private  List<Produto> produtos = new LinkedList<>();
-    private double valor;
 
    public void addProduto(Produto produto) {
        produtos.add(produto);
-       calcValor();
    }
 
     public List<Produto> getProdutos() {
         return Collections.unmodifiableList(produtos);
     }
 
-    public double getValor() {
-        return valor;
-    }
-
-    private void calcValor() {
-        valor = getProdutos().stream().mapToDouble(Produto::getPreco).sum();
+    public float getValor() {
+        return (float)getProdutos().stream().mapToDouble(Produto::getPreco).sum();
     }
 }

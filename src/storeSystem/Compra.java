@@ -1,35 +1,28 @@
 package storeSystem;
 
+import java.util.Collections;
+import java.util.List;
+
 public class Compra {
-    private final int id;
-    private final Carrinho carrinho;
+    private final List<Produto> produtos;
     private final Pagamento pagamento;
-    private double valor;
+    private float valor;
 
-    Compra(int id, Carrinho carrinho, Pagamento pagamento) {
-        this.id = id;
-        this.carrinho = carrinho;
+    Compra(List<Produto> produtos, float valor,Pagamento pagamento) {
+        this.produtos = produtos;
         this.pagamento = pagamento;
-        setValor();
+        this.valor = valor;
     }
 
-    public int getId() {
-        return id;
+    public List<Produto> produtos() {
+        return Collections.unmodifiableList(produtos);
     }
 
-    public Carrinho getCarrinho() {
-        return carrinho;
-    }
-
-    public Pagamento getPagamento() {
+    public Pagamento getPagamentoTipo() {
         return pagamento;
     }
 
-    public double getValor() {
+    public float getValorCompra() {
         return valor;
-    }
-
-    private void setValor() {
-        valor = getCarrinho().getValor();
     }
 }

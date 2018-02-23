@@ -3,20 +3,14 @@ package storeSystem;
 public abstract class Pagamento {
 
     private final TipoPagamento tipo;
-    private final double valor;
 
-    Pagamento(TipoPagamento tipo, double valor) {
+    Pagamento(TipoPagamento tipo) {
         this.tipo = tipo;
-        this.valor = valor;
     }
 
-    abstract boolean validarPagamento();
+    abstract void validarPagamento();
 
     public TipoPagamento getTipo() {
         return tipo;
-    }
-
-    public double getValor() {
-        return valor;
     }
 }
