@@ -3,6 +3,8 @@ package frontend;
 import storeSystem.*;
 import database.*;
 
+import java.util.HashMap;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class CorePage {
@@ -10,12 +12,15 @@ public class CorePage {
     private final Scanner scanner;
     private final FakeDB DB;
     private Carrinho carrinho;
+    private HashMap<Integer, TipoPagamento> pagamentos = new HashMap<>();
 
     public CorePage() {
         scanner  = new Scanner(System.in);
         DB =  new FakeDB();
         carrinho = new Carrinho();
         iniciarBd();
+        pagamentos.put(1, TipoPagamento.BOLETO);
+        pagamentos.put(2, TipoPagamento.CC);
     }
 
     // exemplo de banco de dados
@@ -52,18 +57,25 @@ public class CorePage {
         GerenciadorCompra gerenciador = new GerenciadorCompra(DB, carrinho);
 
         System.out.println("Digite o id do cliente(login): ");
-        int idCliente = scanner.nextInt();
+        int idCliente = 0;
+        while (idCliente < 1 || idCliente > 3) {
+            idCliente = scanner.nextInt();
+        }
         gerenciador.validarCliente(idCliente);
 
-        System.out.println("Insira a forma de pagamento:");
-        String tipo = scanner.next();
+        System.out.println("Insira a forma de pagamento:\n[1] boleto\n[2] cartao de credito");
+        int num = 0;
+        while (num < 1 || num > 2) {
+            num = scanner.nextInt();
+        }
 
-        // substituir por menu de opçoes de pagamento (Map <key, tipo de pagamento>)
-        if (tipo.equals("boleto")) {
+        TipoPagamento tipo = getTipoPagamento(num);
+
+        if (tipo.equals(TipoPagamento.BOLETO)) {
             Boleto boleto = new Boleto(gerenciador.getValordaCompra());
             System.out.println("Código do boleto: " + boleto.getCodigo());
             pagamento = boleto;
-        } else if (tipo.equals("CC")) {
+        } else if (tipo.equals(TipoPagamento.CC)) {
             System.out.println("Numero do Cartão:");
             String numCartao = scanner.next();
             System.out.println("Numero de parcelas");
@@ -86,5 +98,13 @@ public class CorePage {
         for (int i = 0; i < qtd; i++) {
             carrinho.addProduto(novoProduto);
         }
+    }
+
+    private TipoPagamento getTipoPagamento(int num) {
+        return pagamentos.entrySet().stream()
+                .filter(pagamento -> pagamento.getKey() == num)
+                .findAny()
+                .orElseThrow(NoSuchElementException::new)
+                .getValue();
     }
 }

@@ -4,7 +4,6 @@ public abstract class Pagamento {
 
     private final TipoPagamento tipo;
     private final double valor;
-    boolean isValido = false;
 
     Pagamento(TipoPagamento tipo, double valor) {
         this.tipo = tipo;
