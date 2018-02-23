@@ -11,6 +11,7 @@ public class CCRouteene implements CheckoutRouteene {
 
     @Override
     public void run(GerenciadorCompra gerenciador) {
+        System.out.printf("Valor toal da compra: %.2f" + "\n", gerenciador.getValordaCompra());
         System.out.println("Numero do Cartão:");
         String numCartao = scanner.next();
         System.out.println("Numero de parcelas");

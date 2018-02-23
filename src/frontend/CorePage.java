@@ -1,5 +1,6 @@
 package frontend;
 
+import com.sun.xml.internal.bind.v2.util.QNameMap;
 import storeSystem.*;
 import database.*;
 
@@ -59,7 +60,15 @@ public class CorePage {
         }
 
         System.out.println("Seu carrinho de compras:");
-        carrinho.getProdutos().forEach(produto -> System.out.println(produto.getNome()));
+        HashMap<String, Integer> inventorio = new HashMap<>();
+        for (Produto produto : carrinho.getProdutos()) {
+            if (!inventorio.containsKey(produto.getNome())){
+                inventorio.put(produto.getNome(), 1);
+            } else {
+                inventorio.put(produto.getNome(), inventorio.get(produto.getNome()) + 1);
+            }
+        }
+        inventorio.forEach((key, value) -> System.out.println(key + "\tx" + value));
     }
 
     private void validarCliente() {
