@@ -2,38 +2,39 @@ package database;
 
 import java.util.LinkedList;
 import java.util.List;
-import storeSystem.Produto;
-import storeSystem.Cliente;
+
+import storeSystem.Product;
+import storeSystem.Client;
 import java.util.NoSuchElementException;
 
 public class FakeDB {
-    private List<Produto> produtos;
-    private List<Cliente> clientes;
+    private List<Product> products;
+    private List<Client> clients;
 
     public FakeDB() {
-        produtos = new LinkedList<>();
-        clientes = new LinkedList<>();
+        products = new LinkedList<>();
+        clients = new LinkedList<>();
     }
 
     public void addCliente(int id) {
-        clientes.add(new Cliente(id));
+        clients.add(new Client(id));
     }
 
     public void addProduto(double preco, String nome) {
-        produtos.add(new Produto(preco, nome));
+        products.add(new Product(preco, nome));
     }
 
-    public List<Cliente> getClientes() {
-        return clientes;
+    public List<Client> getClients() {
+        return clients;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public Produto getProduto(String nome) {
-        return produtos.stream()
-                .filter(produto -> produto.getNome().equals(nome))
+    public Product getProduto(String nome) {
+        return products.stream()
+                .filter(product -> product.getNome().equals(nome))
                 .findAny()
                 .orElseThrow(NoSuchElementException::new);
     }

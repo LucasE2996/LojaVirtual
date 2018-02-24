@@ -11,20 +11,20 @@ public class CorePage {
 
     private final Scanner scanner  = new Scanner(System.in);
     private final FakeDB DB;
-    private final GerenciadorCompra gerenciador;
-    private Carrinho carrinho;
-    private HashMap<Integer, CheckoutRouteene> checkRouteenes = new HashMap<>();
+    private final OrderManager manager;
+    private ShoppingCart shoppingCart;
+    private HashMap<Integer, CheckoutRoutine> checkRoutines = new HashMap<>();
 
     public CorePage() {
         DB =  new FakeDB();
-        carrinho = new Carrinho();
-        gerenciador = new GerenciadorCompra(DB, carrinho);
-        checkRouteenes.put(1, new BoletoRouteene());
-        checkRouteenes.put(2, new CCRouteene());
+        shoppingCart = new ShoppingCart();
+        manager = new OrderManager(DB, shoppingCart);
+        checkRoutines.put(1, new BilletRoutine());
+        checkRoutines.put(2, new CCRoutine());
         iniciarBd();
     }
 
-    // exemplo de banco de dados
+    // database exemple
     private void iniciarBd() {
         DB.addCliente(1);
         DB.addCliente(2);
@@ -38,14 +38,14 @@ public class CorePage {
     public void mainRouteene() {
         showProdutos();
         comprar();
-        validarCliente();
-        validarPagamento();
+        validateClient();
+        validatePayment();
         System.out.println("Compra finalizada com sucesso!");
     }
 
     private void showProdutos() {
         System.out.println("Esses sao os produtos disponiveis: ");
-        DB.getProdutos().forEach(produto -> System.out.println(produto.getNome()));
+        DB.getProducts().forEach(product -> System.out.println(product.getNome()));
     }
 
     private void comprar() {
@@ -53,54 +53,54 @@ public class CorePage {
         int number = 1;
         while (number != 0) {
             System.out.println("Novo produto:");
-            addProduto(scanner.next().trim(), scanner.nextInt());
+            addProduct(scanner.next().trim(), scanner.nextInt());
             System.out.println("Para finalizar compra digite 0, caso queira comprar novamente digite outro numero");
             number = scanner.nextInt();
         }
 
         System.out.println("Seu carrinho de compras:");
         HashMap<String, Integer> inventorio = new HashMap<>();
-        for (Produto produto : carrinho.getProdutos()) {
-            if (!inventorio.containsKey(produto.getNome())){
-                inventorio.put(produto.getNome(), 1);
+        for (Product product : shoppingCart.getProducts()) {
+            if (!inventorio.containsKey(product.getNome())){
+                inventorio.put(product.getNome(), 1);
             } else {
-                inventorio.put(produto.getNome(), inventorio.get(produto.getNome()) + 1);
+                inventorio.put(product.getNome(), inventorio.get(product.getNome()) + 1);
             }
         }
         inventorio.forEach((key, value) -> System.out.println(key + "\tx" + value));
     }
 
-    private void validarCliente() {
+    private void validateClient() {
         System.out.println("Digite o id do cliente(login): ");
-        int idCliente = 0;
-        while (idCliente < 1 || idCliente > 3) {
-            idCliente = scanner.nextInt();
+        int clientID = 0;
+        while (clientID < 1 || clientID > 3) {
+            clientID = scanner.nextInt();
         }
-        gerenciador.validarCliente(idCliente);
+        manager.validarCliente(clientID);
     }
 
-    private void validarPagamento() {
+    private void validatePayment() {
         System.out.println("Insira a forma de pagamento:\n[1] boleto\n[2] cartao de credito");
         int num = 0;
         while (num < 1 || num > 2) {
             num = scanner.nextInt();
         }
-        runPagamento(num, gerenciador);
+        runPagamento(num, manager);
     }
 
-    private void addProduto(String produto, int qtd) {
-        Produto novoProduto = DB.getProduto(produto);
+    private void addProduct(String produto, int qtd) {
+        Product novoProduct = DB.getProduto(produto);
         for (int i = 0; i < qtd; i++) {
-            carrinho.addProduto(novoProduto);
+            shoppingCart.addProduto(novoProduct);
         }
     }
 
-    private void runPagamento(int num, GerenciadorCompra gerenciador){
-        checkRouteenes.entrySet().stream()
+    private void runPagamento(int num, OrderManager manager){
+        checkRoutines.entrySet().stream()
                 .filter(routeene -> routeene.getKey() == num)
                 .findAny()
                 .orElseThrow(NoSuchElementException::new)
                 .getValue()
-                .run(gerenciador);
+                .run(manager);
     }
 }

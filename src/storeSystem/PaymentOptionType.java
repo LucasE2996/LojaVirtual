@@ -1,6 +1,6 @@
 package storeSystem;
 
-public enum TipoPagamento {
+public enum PaymentOptionType {
 
     CC, BOLETO
 }

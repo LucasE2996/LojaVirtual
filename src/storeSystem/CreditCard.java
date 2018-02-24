@@ -1,12 +1,12 @@
 package storeSystem;
 
-public class CC extends Pagamento {
+public class CreditCard extends PaymentOption {
 
     private final String numeroCartao;
     private final int parcelas;
 
-    public CC(String numeroCartao, int parcelas) {
-        super(TipoPagamento.CC);
+    public CreditCard(String numeroCartao, int parcelas) {
+        super(PaymentOptionType.CC);
         this.parcelas = parcelas;
         this.numeroCartao = numeroCartao;
     }

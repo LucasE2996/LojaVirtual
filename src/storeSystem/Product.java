@@ -1,10 +1,10 @@
 package storeSystem;
 
-public class Produto {
+public class Product {
     private double preco;
     private final String nome;
 
-    public Produto(double preco, String nome) {
+    public Product(double preco, String nome) {
         this.preco = preco;
         this.nome = nome;
     }

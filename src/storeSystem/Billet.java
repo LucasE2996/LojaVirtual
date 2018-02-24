@@ -1,10 +1,10 @@
 package storeSystem;
 
-public class Boleto extends Pagamento {
+public class Billet extends PaymentOption {
     private final int codigo;
 
-    public Boleto() {
-        super(TipoPagamento.BOLETO);
+    public Billet() {
+        super(PaymentOptionType.BOLETO);
         this.codigo = gerarCodigo();
     }
 
