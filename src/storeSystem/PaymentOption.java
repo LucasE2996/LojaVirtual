@@ -8,8 +8,6 @@ public abstract class PaymentOption {
         this.tipo = tipo;
     }
 
-    abstract void validarPagamento();
-
     public PaymentOptionType getTipo() {
         return tipo;
     }

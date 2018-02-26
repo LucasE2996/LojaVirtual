@@ -2,7 +2,7 @@ package storeSystem;
 
 import database.FakeDB;
 
-import java.util.NoSuchElementException;
+
 
 public class OrderManager {
     private final ShoppingCart shoppingCart;
@@ -14,20 +14,12 @@ public class OrderManager {
     }
 
     public void validarCompra(PaymentOption paymentOption, Client client) {
-        validarPagamento(paymentOption);
-        addCompraToCliente(paymentOption, client);
+        Order order = new Order( shoppingCart.getItems(), shoppingCart.getValor(), paymentOption);
+        client.addCompra(order);
     }
 
     public double getValordaCompra() {
         return shoppingCart.getValor();
     }
 
-    private void addCompraToCliente(PaymentOption paymentOption, Client client) {
-        Order order = new Order( shoppingCart.getItems(), shoppingCart.getValor(), paymentOption);
-        client.addCompra(order);
-    }
-
-    private void validarPagamento(PaymentOption paymentOption) {
-        paymentOption.validarPagamento();
-    }
 }

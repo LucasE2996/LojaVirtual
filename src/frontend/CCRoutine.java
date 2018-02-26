@@ -1,6 +1,5 @@
 package frontend;
 
-import com.sun.deploy.util.SessionState;
 import storeSystem.Client;
 import storeSystem.CreditCard;
 import storeSystem.OrderManager;

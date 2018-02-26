@@ -11,16 +11,11 @@ public class CreditCard extends PaymentOption {
         this.numeroCartao = numeroCartao;
     }
 
-    @Override
-    void validarPagamento() {
-        validarCartao(numeroCartao, parcelas);
-    }
-
     public String getNumeroCartao() {
         return numeroCartao;
     }
 
-    private void validarCartao(String numeroCartao, int parcelas) {
+    private void validarCartao() {
         // codigo de validação do cartão, seria integrado ao sistema bancario
         // para fazer autenticação da transação
     }
