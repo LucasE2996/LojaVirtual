@@ -20,7 +20,7 @@ public class FakeDB {
         clients.add(new Client(id));
     }
 
-    public void addProduto(double preco, String nome) {
+    public void addProduto(float preco, String nome) {
         products.add(new Product(preco, nome));
     }
 
@@ -32,7 +32,7 @@ public class FakeDB {
         return products;
     }
 
-    public Product getProduto(String nome) {
+    public Product getProduct(String nome) {
         return products.stream()
                 .filter(product -> product.getNome().equals(nome))
                 .findAny()

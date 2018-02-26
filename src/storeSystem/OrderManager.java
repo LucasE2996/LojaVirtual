@@ -7,31 +7,23 @@ import java.util.NoSuchElementException;
 public class OrderManager {
     private final ShoppingCart shoppingCart;
     private final FakeDB DB;
-    private Client client;
 
     public OrderManager(FakeDB DB, ShoppingCart shoppingCart) {
         this.DB = DB;
         this.shoppingCart = shoppingCart;
     }
 
-    public void validarCompra(PaymentOption paymentOption) {
+    public void validarCompra(PaymentOption paymentOption, Client client) {
         validarPagamento(paymentOption);
-        addCompraToCliente(paymentOption);
-    }
-
-    public void validarCliente(int id) {
-        this.client = DB.getClients().stream()
-                .filter(client1 -> client1.getId() == id)
-                .findAny()
-                .orElseThrow(NoSuchElementException::new);
+        addCompraToCliente(paymentOption, client);
     }
 
     public double getValordaCompra() {
         return shoppingCart.getValor();
     }
 
-    private void addCompraToCliente(PaymentOption paymentOption) {
-        Order order = new Order( shoppingCart.getProducts(), shoppingCart.getValor(), paymentOption);
+    private void addCompraToCliente(PaymentOption paymentOption, Client client) {
+        Order order = new Order( shoppingCart.getItems(), shoppingCart.getValor(), paymentOption);
         client.addCompra(order);
     }
 

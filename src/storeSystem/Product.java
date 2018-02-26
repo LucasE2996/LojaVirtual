@@ -1,10 +1,10 @@
 package storeSystem;
 
 public class Product {
-    private double preco;
+    private float preco;
     private final String nome;
 
-    public Product(double preco, String nome) {
+    public Product(float preco, String nome) {
         this.preco = preco;
         this.nome = nome;
     }
@@ -13,7 +13,7 @@ public class Product {
         return nome;
     }
 
-    public double getPreco() {
+    public float getPreco() {
         return preco;
     }
 }

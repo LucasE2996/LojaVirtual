@@ -5,17 +5,21 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ShoppingCart {
-    private  List<Product> products = new LinkedList<>();
+    private  List<Item> items = new LinkedList<>();
 
-   public void addProduto(Product product) {
-       products.add(product);
+   public void addItem(Product product, int quantity) {
+       items.add(new Item(product, quantity));
    }
 
-    public List<Product> getProducts() {
-        return Collections.unmodifiableList(products);
+    public List<Item> getItems() {
+        return Collections.unmodifiableList(items);
     }
 
     public float getValor() {
-        return (float) getProducts().stream().mapToDouble(Product::getPreco).sum();
+       float sum = 0;
+        for (Item item: items) {
+            sum += item.getTotal();
+        }
+        return sum;
     }
 }
