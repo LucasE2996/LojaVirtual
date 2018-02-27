@@ -74,7 +74,7 @@ public class CorePage {
     private void validateClient() {
         System.out.println("Digite o id do cliente(login): ");
         int clientID = 0;
-        while (clientID < 1 || clientID > 3) {
+        while (clientID < 1 || clientID > 3) { //"validacao"
             clientID = scanner.nextInt();
         }
         loggedClient = login.validarCliente(clientID, DB);

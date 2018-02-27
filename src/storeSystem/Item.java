@@ -1,7 +1,7 @@
 package storeSystem;
 
 public class Item {
-    private int quantity;
+    private int quantity; //atomic integer
     private Product product;
 
     Item(Product product, int quantity) {
