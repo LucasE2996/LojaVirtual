@@ -63,7 +63,7 @@ public class CorePage {
 
         System.out.println("Seu carrinho de compras:");
         for (Item item: shoppingCart.getItems()) {
-            System.out.println(item.getProductName() + " x" + item.getQuantity());
+            System.out.println(item.getProductName() + "\tx" + item.getQuantity());
         }
 
     }

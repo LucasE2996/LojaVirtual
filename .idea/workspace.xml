@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="607dce65-79fb-4d6f-b4b1-7671f554e984" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/frontend/BilletRoutine.java" afterPath="$PROJECT_DIR$/src/frontend/BilletRoutine.java" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/CorePage.java" afterPath="$PROJECT_DIR$/src/frontend/CorePage.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,16 +50,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CorePage.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CorePage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/frontend/CorePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+            <state relative-caret-position="226">
+              <caret line="65" column="58" lean-forward="false" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="58" />
               <folding>
+                <element signature="method#CorePage#0;class#CorePage#0" expanded="false" />
                 <element signature="method#iniciarBd#0;class#CorePage#0" expanded="false" />
                 <element signature="method#mainRouteene#0;class#CorePage#0" expanded="false" />
                 <element signature="method#showProdutos#0;class#CorePage#0" expanded="false" />
-                <element signature="method#comprar#0;class#CorePage#0" expanded="false" />
                 <element signature="method#validateClient#0;class#CorePage#0" expanded="false" />
                 <element signature="method#validatePayment#0;class#CorePage#0" expanded="false" />
                 <element signature="method#addProduct#0;class#CorePage#0" expanded="false" />
@@ -69,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BilletRoutine.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BilletRoutine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/frontend/BilletRoutine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+            <state relative-caret-position="76">
+              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#607#608#0" expanded="true" />
@@ -182,9 +182,9 @@
         <option value="$PROJECT_DIR$/src/storeSystem/CodeGenerator.java" />
         <option value="$PROJECT_DIR$/src/storeSystem/OrderManager.java" />
         <option value="$PROJECT_DIR$/src/frontend/CodeGenerator.java" />
-        <option value="$PROJECT_DIR$/src/frontend/CorePage.java" />
         <option value="$PROJECT_DIR$/src/storeSystem/CreditCard.java" />
         <option value="$PROJECT_DIR$/src/frontend/BilletRoutine.java" />
+        <option value="$PROJECT_DIR$/src/frontend/CorePage.java" />
       </list>
     </option>
   </component>
@@ -403,7 +403,7 @@
       <workItem from="1519225666392" duration="22992000" />
       <workItem from="1519301920809" duration="8057000" />
       <workItem from="1519314612093" duration="5317000" />
-      <workItem from="1519754319373" duration="58000" />
+      <workItem from="1519754319373" duration="350000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1519160874809</created>
@@ -454,11 +454,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519411271024</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Refactoring">
+      <created>1519754382271</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1519754382271</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65424000" />
+    <option name="totallyTimeSpent" value="65716000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1382" height="744" extended-state="6" />
@@ -471,7 +478,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32423207" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32423207" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -918,23 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/CorePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding>
-            <element signature="method#iniciarBd#0;class#CorePage#0" expanded="false" />
-            <element signature="method#mainRouteene#0;class#CorePage#0" expanded="false" />
-            <element signature="method#showProdutos#0;class#CorePage#0" expanded="false" />
-            <element signature="method#comprar#0;class#CorePage#0" expanded="false" />
-            <element signature="method#validateClient#0;class#CorePage#0" expanded="false" />
-            <element signature="method#validatePayment#0;class#CorePage#0" expanded="false" />
-            <element signature="method#addProduct#0;class#CorePage#0" expanded="false" />
-            <element signature="method#runPagamento#0;class#CorePage#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/CCRoutine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -963,12 +953,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/BilletRoutine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+        <state relative-caret-position="76">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#607#608#0" expanded="true" />
             <element signature="e#662#663#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/CorePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="65" column="58" lean-forward="false" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="58" />
+          <folding>
+            <element signature="method#CorePage#0;class#CorePage#0" expanded="false" />
+            <element signature="method#iniciarBd#0;class#CorePage#0" expanded="false" />
+            <element signature="method#mainRouteene#0;class#CorePage#0" expanded="false" />
+            <element signature="method#showProdutos#0;class#CorePage#0" expanded="false" />
+            <element signature="method#validateClient#0;class#CorePage#0" expanded="false" />
+            <element signature="method#validatePayment#0;class#CorePage#0" expanded="false" />
+            <element signature="method#addProduct#0;class#CorePage#0" expanded="false" />
+            <element signature="method#runPagamento#0;class#CorePage#0" expanded="false" />
           </folding>
         </state>
       </provider>
