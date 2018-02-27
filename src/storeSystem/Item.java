@@ -20,4 +20,8 @@ public class Item {
     public String getProductName() {
         return product.getNome();
     }
+
+    void increment(int quantity) {
+        this.quantity += quantity;
+    }
 }
