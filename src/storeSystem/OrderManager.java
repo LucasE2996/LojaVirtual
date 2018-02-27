@@ -1,25 +1,14 @@
 package storeSystem;
 
-import database.FakeDB;
-
-
-
 public class OrderManager {
     private final ShoppingCart shoppingCart;
-    private final FakeDB DB;
 
-    public OrderManager(FakeDB DB, ShoppingCart shoppingCart) {
-        this.DB = DB;
+    public OrderManager(ShoppingCart shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
 
-    public void validarCompra(PaymentOption paymentOption, Client client) {
+    public void addCompraToClient(PaymentOption paymentOption, Client client) {
         Order order = new Order( shoppingCart.getItems(), shoppingCart.getValor(), paymentOption);
         client.addCompra(order);
     }
-
-    public double getValordaCompra() {
-        return shoppingCart.getValor();
-    }
-
 }

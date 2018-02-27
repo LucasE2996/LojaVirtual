@@ -14,15 +14,13 @@ public class Order {
         this.valor = valor;
     }
 
-    public List<Item> items() {
+    public List<Item> getItems() {
         return Collections.unmodifiableList(items);
     }
-
-    public PaymentOption getPagamentoTipo() {
+    public PaymentOption getPaymentOption() {
         return paymentOption;
     }
-
-    public float getValorCompra() {
+    public float getOrderValue() {
         return valor;
     }
 }

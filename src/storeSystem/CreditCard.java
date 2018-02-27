@@ -6,7 +6,7 @@ public class CreditCard extends PaymentOption {
     private final int parcelas;
 
     public CreditCard(String numeroCartao, int parcelas) {
-        super(PaymentOptionType.CC);
+        super(PaymentOptionType.CREDITCARD);
         this.parcelas = parcelas;
         this.numeroCartao = numeroCartao;
     }

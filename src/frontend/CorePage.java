@@ -9,19 +9,21 @@ import java.util.Scanner;
 
 public class CorePage {
 
-    private final Scanner scanner  = new Scanner(System.in);
+    private final Scanner scanner  = new Scanner(System.in); //delegar a outra classe
     private final FakeDB DB;
     private final OrderManager manager;
     private final Login login;
-    private Client client;
+    private final ClientPage clientPage;
+    private Client loggedClient;
     private ShoppingCart shoppingCart;
     private HashMap<Integer, CheckoutRoutine> checkRoutines = new HashMap<>();
 
     public CorePage() {
         DB =  new FakeDB();
         shoppingCart = new ShoppingCart();
-        manager = new OrderManager(DB, shoppingCart);
+        manager = new OrderManager(shoppingCart);
         login = new Login();
+        clientPage = new ClientPage();
         checkRoutines.put(1, new BilletRoutine());
         checkRoutines.put(2, new CCRoutine());
         iniciarBd();
@@ -44,6 +46,7 @@ public class CorePage {
         validateClient();
         validatePayment();
         System.out.println("Compra finalizada com sucesso!");
+        clientPage.run(loggedClient);
     }
 
     private void showProdutos() {
@@ -56,7 +59,7 @@ public class CorePage {
         int number = 1;
         while (number != 0) {
             System.out.println("Novo produto:");
-            addProduct(scanner.next().trim(), scanner.nextInt());
+            addItem(scanner.next().trim(), scanner.nextInt());
             System.out.println("Para finalizar compra digite 0, caso queira comprar novamente digite outro numero");
             number = scanner.nextInt();
         }
@@ -74,7 +77,7 @@ public class CorePage {
         while (clientID < 1 || clientID > 3) {
             clientID = scanner.nextInt();
         }
-        client = login.validarCliente(clientID, DB);
+        loggedClient = login.validarCliente(clientID, DB);
     }
 
     private void validatePayment() {
@@ -86,9 +89,8 @@ public class CorePage {
         runPagamento(num, manager);
     }
 
-    private void addProduct(String produto, int qtd) {
-        Product newProduct = DB.getProduct(produto);
-        shoppingCart.addItem(newProduct, qtd);
+    private void addItem(String produto, int qtd) {
+        shoppingCart.addItem(DB.getProduct(produto), qtd);
     }
 
     private void runPagamento(int num, OrderManager manager){
@@ -97,6 +99,6 @@ public class CorePage {
                 .findAny()
                 .orElseThrow(NoSuchElementException::new)
                 .getValue()
-                .run(manager, client);
+                .run(manager, loggedClient, shoppingCart);
     }
 }
