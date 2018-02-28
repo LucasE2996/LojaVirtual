@@ -24,10 +24,10 @@ public class ShoppingCart {
     }
 
     public float getValor() {
-       float sum = 0;
-        for (Item item: items) {
-            sum += item.getTotal();
-        }
-        return sum;
+       return (float)items.stream().mapToDouble(Item::getTotal).sum();
+    }
+
+    public void clear() {
+       items.clear();
     }
 }

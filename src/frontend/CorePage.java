@@ -93,7 +93,7 @@ public class CorePage {
         shoppingCart.addItem(DB.getProduct(produto), qtd);
     }
 
-    private void runPagamento(int num, OrderManager manager){
+    private void runPagamento(int num, OrderManager manager) {
         checkRoutines.entrySet().stream()
                 .filter(routeene -> routeene.getKey() == num)
                 .findAny()

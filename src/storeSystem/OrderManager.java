@@ -10,5 +10,6 @@ public class OrderManager {
     public void addCompraToClient(PaymentOption paymentOption, Client client) {
         Order order = new Order( shoppingCart.getItems(), shoppingCart.getValor(), paymentOption);
         client.addCompra(order);
+        shoppingCart.clear();
     }
 }
